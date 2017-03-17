@@ -2,6 +2,9 @@
 
 #include "pdcsdl.h"
 
+#include <stdlib.h>
+#include <ctype.h>
+
 /*man-start**************************************************************
 
 pdckbd

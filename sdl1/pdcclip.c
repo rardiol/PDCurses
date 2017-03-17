@@ -2,6 +2,8 @@
 
 #include "pdcsdl.h"
 
+#include <string.h>
+
 #include <stdlib.h>
 
 /*man-start**************************************************************
