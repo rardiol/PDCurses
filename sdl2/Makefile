@@ -41,12 +41,16 @@ ifdef CHTYPE_16
 	CFLAGS += -DCHTYPE_16
 endif
 
+CFLAGS += -s EMTERPRETIFY=1 -s EMTERPRETIFY_ASYNC=1
+
 
 BUILD		= $(CC) $(CFLAGS) -I$(PDCURSES_SRCDIR)
 
 ifeq ($(shell uname),Darwin)
 	DEMOFLAGS = -Dmain=SDL_main
 endif
+
+DEMOFLAGS =-s WASM=1 -s "BINARYEN_METHOD='interpret-binary'"
 
 LINK		= $(CC)
 LDFLAGS		= $(LIBCURSES) $(SLIBS)
@@ -66,7 +70,6 @@ clean:
 	-rm -rf *.o trace $(LIBCURSES) $(DEMOS)
 
 demos:	$(DEMOS)
-	strip $(DEMOS)
 
 $(LIBCURSES) : $(LIBOBJS) $(PDCOBJS)
 	ar rv $@ $?
