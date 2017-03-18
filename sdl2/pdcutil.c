@@ -2,6 +2,10 @@
 
 #include "pdcsdl.h"
 
+#ifdef __EMSCRIPTEN__
+#include <emscripten.h>
+#endif
+
 void PDC_beep(void)
 {
     PDC_LOG(("PDC_beep() - called\n"));
@@ -12,7 +16,12 @@ void PDC_napms(int ms)
     PDC_LOG(("PDC_napms() - called: ms=%d\n", ms));
 
     PDC_update_rects();
+
+#ifdef __EMSCRIPTEN__
+    emscripten_sleep(ms);
+#else
     SDL_Delay(ms);
+#endif
 }
 
 const char *PDC_sysname(void)

@@ -2,6 +2,10 @@
 
 #include <curspriv.h>
 
+#ifdef __EMSCRIPTEN__
+#include <emscripten.h>
+#endif
+
 /*man-start**************************************************************
 
 getch
@@ -232,7 +236,13 @@ int wgetch(WINDOW *win)
                 if (win->_nodelay)
                     return ERR;
 
-            napms(50);  /* sleep for 1/20th second */
+            /* sleep for 1/20th second */
+#ifdef __EMSCRIPTEN__
+            emscripten_sleep(50);
+#else
+            napms(50);
+#endif
+
             continue;   /* then check again */
         }
 
