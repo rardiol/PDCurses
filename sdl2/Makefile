@@ -57,6 +57,8 @@ LDFLAGS		= $(LIBCURSES) $(SLIBS)
 RANLIB		= ranlib
 LIBCURSES	= libpdcurses.a
 
+EXE_EXTENSION=.html
+
 DEMOS		= firework$(EXE_EXTENSION) newdemo$(EXE_EXTENSION) newtest$(EXE_EXTENSION) ptest$(EXE_EXTENSION) rain$(EXE_EXTENSION) testcurs$(EXE_EXTENSION) tuidemo$(EXE_EXTENSION) worm$(EXE_EXTENSION) xmas$(EXE_EXTENSION) \
 sdltest$(EXE_EXTENSION)
 
